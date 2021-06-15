@@ -1,0 +1,13 @@
+<label for="name">Nom </label> 
+<input id="name" type="text" [formControl]="name"><br><br>
+<label for="name">Prénom </label>
+<input id="firstname" type="text" [formControl]="firstName"><br><br>
+
+<div><textarea [formControl]="description"></textarea><br><br></div>
+
+
+<div>
+    <button
+    type="submit"
+    (click)="submit()">Soumettre</button>
+</div>
