@@ -1,7 +1,10 @@
 
 <app-formulaire (newBugEvent)="addBug($event)"></app-formulaire>
-<router-outlet></router-outlet>
 
 <ul>
-    <li *ngFor="let bug of bugs">{{bug.title}}</li>
+    <li *ngFor="let bug of bugs"><app-showbug [bug]="bug"></app-showbug></li>
 </ul>
+
+<router-outlet></router-outlet>
+
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Bug } from '../@shared/models/bug';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -14,7 +15,10 @@ export class FormulaireComponent implements OnInit {
   @Output() newBugEvent = new EventEmitter<Partial<Bug>>();
   addBugForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
+    ) { 
     this.createForms();
   }
 

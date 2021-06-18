@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { AddComponent } from './add/add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormulaireComponent } from './formulaire/formulaire.component';
+import { ShowbugComponent } from './showbug/showbug.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddComponent,
-    FormulaireComponent
+    FormulaireComponent,
+    ShowbugComponent
   ],
   imports: [
     BrowserModule,
