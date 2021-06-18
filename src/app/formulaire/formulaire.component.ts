@@ -1,24 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Bug } from '../@shared/models/bug';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-formulaire',
   templateUrl: './formulaire.component.html',
   styleUrls: ['./formulaire.component.scss']
 })
+
 export class FormulaireComponent implements OnInit {
 
-  constructor() { }
+  @Output() newBugEvent = new EventEmitter<Partial<Bug>>();
+  addBugForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { 
+    this.createForms();
+  }
 
   ngOnInit(): void {
   }
 
-  name = new FormControl('');
-  firstName = new FormControl('');
-  description = new FormControl('');
-  submit() {
-    console.log(this.name.value);
-    console.log(this.firstName.value);
-}
+  create() {
+    console.log("create > ", this.addBugForm);
+	  const title = this.addBugForm.get("title").value;
+	  const description = this.addBugForm.get("description").value;
+    this.addNewBug({title: title, description: description});
+  }
 
+  private createForms(){
+    this.addBugForm = this.formBuilder.group({
+      title: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['']
+    });
+  }
+  addNewBug(value: Partial<Bug>){
+    this.newBugEvent.emit(value);
+  }
 }

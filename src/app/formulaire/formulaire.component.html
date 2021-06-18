@@ -1,13 +1,23 @@
-<label for="name">Nom </label> 
-<input id="name" type="text" [formControl]="name"><br><br>
-<label for="name">Prénom </label>
-<input id="firstname" type="text" [formControl]="firstName"><br><br>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-<div><textarea [formControl]="description"></textarea><br><br></div>
+<div class="container">
+    <div class="card bg-dark m-5" style="border-radius:20px;">
+        <div class="card-body text-light m-4">
+            <h5 class="card-title fw-bold">Signaler un bug</h5>
 
+            <form [formGroup]="addBugForm" (ngSubmit)="create()">
+                <div class="mb-3">
+                    <label for="page" class="form-label">Titre du bug</label>
+                    <input id="page" type="text" class="form-control" formControlName="title">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description </label>
+                    <input id="description" type="text" class="form-control" formControlName="description">
+                </div>
+                <button type="submit" class="btn btn-primary">Créer</button>
+            </form>
 
-<div>
-    <button
-    type="submit"
-    (click)="submit()">Soumettre</button>
+        </div>
+    </div>
 </div>
+

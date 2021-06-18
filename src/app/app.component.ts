@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Bug } from './@shared/models/bug';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BugTracker';
+
+  bugs = [];
+
+  addBug(newBug: Partial<Bug>) {
+    this.bugs.push(newBug);
+  }
 }
