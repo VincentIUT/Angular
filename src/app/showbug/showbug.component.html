@@ -1,4 +1,13 @@
-<div row-bug>
-    {{bug.title}}
-    {{bug.description}}
-</div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+<table class="table table-striped table-dark" >
+    <thead>
+      <tr *ngFor="let bug of bugs">
+        <th scope="col" >{{bug.title}}</th>
+        <th scope="col">{{bug.description}}</th><button type="button" class="btn btn-danger" (click)="remove(bug._id)">Effacer le bug</button>
+      </tr>
+    </thead>
+    
+  </table>
+
+ 

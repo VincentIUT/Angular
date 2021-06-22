@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Bug } from '../@shared/models/bug';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Output, EventEmitter } from '@angular/core';
+import { BugService } from '../@shared/services/bug.service';
 
 @Component({
   selector: 'app-formulaire',
@@ -12,12 +13,13 @@ import { Output, EventEmitter } from '@angular/core';
 
 export class FormulaireComponent implements OnInit {
 
-  @Output() newBugEvent = new EventEmitter<Partial<Bug>>();
+  // @Output() newBugEvent = new EventEmitter<Partial<Bug>>();
   addBugForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public bugService: BugService
     ) { 
     this.createForms();
   }
@@ -27,9 +29,12 @@ export class FormulaireComponent implements OnInit {
 
   create() {
     console.log("create > ", this.addBugForm);
-	  const title = this.addBugForm.get("title").value;
-	  const description = this.addBugForm.get("description").value;
-    this.addNewBug({title: title, description: description});
+	  // const title = this.addBugForm.get("title").value;
+	  // const description = this.addBugForm.get("description").value;
+    // this.addNewBug({title: title, description: description});
+    this.bugService.create(this.addBugForm.value).subscribe(res=>{
+      alert("Bug enregistré");
+    })
   }
 
   private createForms(){
@@ -38,7 +43,7 @@ export class FormulaireComponent implements OnInit {
       description: ['']
     });
   }
-  addNewBug(value: Partial<Bug>){
-    this.newBugEvent.emit(value);
-  }
+  // addNewBug(value: Partial<Bug>){
+  //   this.newBugEvent.emit(value);
+  // }
 }

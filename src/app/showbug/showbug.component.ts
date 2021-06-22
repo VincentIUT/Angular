@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Bug } from '../@shared/models/bug';
+import { BugService } from '../@shared/services/bug.service';
 
 @Component({
   selector: 'app-showbug',
@@ -9,16 +10,24 @@ import { Bug } from '../@shared/models/bug';
 })
 export class ShowbugComponent implements OnInit {
 
-  @Input() bug : Bug;
+   @Input() bug : Bug;
+   bugs = [];
 
   constructor(
-    private route: ActivatedRoute
+    public bugService: BugService
   ) { }
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.bug = params['bug'];
-    });
+  ngOnInit() { 
+    this.bugService.getAll().subscribe((data: Bug[])=>{
+      console.log(data);
+      this.bugs = data;
+    })
   }
 
+  remove(id) {
+    this.bugService.delete(id).subscribe(()=>{
+      this.bugs = this.bugs.filter(b => b._id!=id)
+    });
+    
+  }
 }
