@@ -5,6 +5,7 @@
       <tr *ngFor="let bug of bugs">
         <th scope="col" >{{bug.title}}</th>
         <th scope="col">{{bug.description}}</th><button type="button" class="btn btn-danger" (click)="remove(bug._id)">Effacer le bug</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/update/', bug._id]">Editer le bug</button>
       </tr>
     </thead>
     

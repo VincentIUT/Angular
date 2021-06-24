@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Bug } from '../@shared/models/bug';
 import { BugService } from '../@shared/services/bug.service';
 
@@ -9,6 +8,8 @@ import { BugService } from '../@shared/services/bug.service';
   styleUrls: ['./showbug.component.scss']
 })
 export class ShowbugComponent implements OnInit {
+
+  message = '';
 
    @Input() bug : Bug;
    bugs = [];
@@ -27,7 +28,7 @@ export class ShowbugComponent implements OnInit {
   remove(id) {
     this.bugService.delete(id).subscribe(()=>{
       this.bugs = this.bugs.filter(b => b._id!=id)
-    });
-    
+    });    
   }
+
 }

@@ -11,7 +11,7 @@ import { Bug } from '../models/bug';
 })
 export class BugService {
 
-  private apiServer = "https://crudcrud.com/api/e284509878394469be1cf12400325ad4";
+  private apiServer = "https://crudcrud.com/api/d9180e5a0c73487692b0c6e9633b05db";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -19,8 +19,8 @@ export class BugService {
   }
   constructor(private httpClient: HttpClient) { }
 
-  create(bug): Observable<Bug> {
-    return this.httpClient.post<Bug>(this.apiServer + '/bug/', JSON.stringify(bug), this.httpOptions)
+  create(bug: Partial<Bug>): Observable<Bug> {
+    return this.httpClient.post<Bug>(this.apiServer + '/bug/', bug,  this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
@@ -40,7 +40,7 @@ export class BugService {
   }
 
   update(id, bug): Observable<Bug> {
-    return this.httpClient.put<Bug>(this.apiServer + '/bug/' + id, JSON.stringify(bug), this.httpOptions)
+    return this.httpClient.put<Bug>(this.apiServer + '/bug/' + id, bug, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )

@@ -8,13 +8,15 @@ import { AddComponent } from './add/add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormulaireComponent } from './formulaire/formulaire.component';
 import { ShowbugComponent } from './showbug/showbug.component';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddComponent,
     FormulaireComponent,
-    ShowbugComponent
+    ShowbugComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
