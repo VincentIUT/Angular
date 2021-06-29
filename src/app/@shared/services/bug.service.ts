@@ -11,7 +11,7 @@ import { Bug } from '../models/bug';
 })
 export class BugService {
 
-  private apiServer = "https://crudcrud.com/api/d9180e5a0c73487692b0c6e9633b05db";
+  private apiServer = "https://crudcrud.com/api/d9d36f7ebcfc435d9df27067f5d5e02b";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

@@ -18,7 +18,7 @@ export class FormulaireComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
+    private router: Router,
     public bugService: BugService
     ) { 
     this.createForms();
@@ -34,6 +34,7 @@ export class FormulaireComponent implements OnInit {
     // this.addNewBug({title: title, description: description});
     this.bugService.create(this.addBugForm.value).subscribe(res=>{
       alert("Bug enregistré");
+      this.router.navigate(['/showbug']);
     })
   }
 
